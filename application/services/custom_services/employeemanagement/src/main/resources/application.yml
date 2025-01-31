@@ -1,0 +1,30 @@
+
+
+spring:
+  datasource:
+    url: ${ORACLE_DB_URL}
+    username: ${ORACLE_DB_USERNAME}
+    password: ${ORACLE_DB_PASSWORD} 
+    driver-class-name: oracle.jdbc.OracleDriver
+    schema: file:./schema.sql
+  jpa:
+    hibernate:
+      ddl-auto: update  
+    show-sql: true  
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.Oracle12cDialect
+        format_sql: true
+        session_factory: org.hibernate.SessionFactory
+
+server:
+  port: 8027
+
+logging:
+  file:
+    name: logs/javatestapp.log
+    path: javatestapp
+  level:
+    com.geppetto: info
+  pattern:
+    dateformat: "dd-MM-yyyy hh:mm:ss aa"
