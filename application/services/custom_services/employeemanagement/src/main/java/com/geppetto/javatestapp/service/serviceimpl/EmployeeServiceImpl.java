@@ -5,23 +5,15 @@ import com.geppetto.javatestapp.dto.EmployeeDto;
 import com.geppetto.javatestapp.exception.EntityNotFoundException;
 import com.geppetto.javatestapp.model.Employee;
 import com.geppetto.javatestapp.service.EmployeeService;
-import com.geppetto.javaproj044.repository.PersonsRepository;
 import org.springframework.data.domain.Page;
-import com.geppetto.javaproj04.repository.PersonsRepository;
 import com.geppetto.javatestapp.util.ConstructQuery;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
-import com.geppetto.javaproj03.repository.PersonsRepository;
 import java.util.List;
-import com.geppetto.javaproj044.util.ConstructQuery;
 import org.springframework.data.domain.PageRequest;
 import java.util.Map;
-import com.geppetto.javaproj02.repository.PersonsRepository;
-import com.geppetto.javaproj04.util.ConstructQuery;
 import java.util.stream.Collectors;
 import com.geppetto.javatestapp.repository.EmployeeRepository;
-import com.geppetto.javaproj03.util.ConstructQuery;
-import com.geppetto.javaproj02.util.ConstructQuery;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -139,7 +131,7 @@ public class EmployeeServiceImpl implements EmployeeService {
   public List<EmployeeDto>  searchEmployee(Map<String, String> allParams) {
     log.info("Enter into searchEmployee method");
     Specification<Employee> specification = constructQuery.constructSearchQuery(allParams);
-  List<Employee> results = usersRepository.findAll(specification);
+  List<Employee> results = employeeRepository.findAll(specification);
   List<EmployeeDto> employeeDtos = results.stream()
     .map(employee -> {
       EmployeeDto dto = new EmployeeDto();
